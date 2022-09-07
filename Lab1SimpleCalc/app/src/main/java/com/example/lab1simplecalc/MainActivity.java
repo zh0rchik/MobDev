@@ -1,6 +1,8 @@
 package com.example.lab1simplecalc;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -15,6 +17,47 @@ public class MainActivity extends AppCompatActivity {
     Button deltaBtn;
     Button multiplyBtn;
     Button quotientBtn;
+    int numBtn;
+    float x;
+    float y;
+
+    public void resultString(int numBtn){
+        try{
+            x = Float.parseFloat(op1.getText().toString());
+            y = Float.parseFloat(op2.getText().toString());
+        }catch (Exception e){
+            Toast.makeText(getApplicationContext(), getResources().getString(R.string.error_enter),
+                    Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        float resultFloat = 0;
+
+        switch (numBtn){
+            case 1:
+                resultFloat = x + y;
+                break;
+            case 2:
+                resultFloat = x - y;
+                break;
+            case 3:
+                resultFloat = x * y;
+                break;
+            case 4:
+                if(y == 0){
+                    Toast.makeText(getApplicationContext(), getResources().getString(R.string.error_zero),
+                            Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                resultFloat = x / y;
+                break;
+            default:
+        }
+
+        Intent i = new Intent(MainActivity.this, ResultActivity.class);
+        i.putExtra("Result", resultFloat);
+        startActivity(i);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,85 +70,39 @@ public class MainActivity extends AppCompatActivity {
         deltaBtn = findViewById(R.id.deltaBtn);
         multiplyBtn = findViewById(R.id.multiplyBtn);
         quotientBtn = findViewById(R.id.quotientBtn);
+        numBtn = 0;
 
         sumBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                float x = Float.parseFloat(op1.getText().toString());
-                float y = Float.parseFloat(op2.getText().toString());
-                float resultFloat = x + y;
-                int resultInt = (int)(x + y);
-
-                if(resultFloat == resultInt){
-                    Toast.makeText(getApplicationContext(),
-                            "Сумма двух введённых чисел: " + (resultInt),
-                            Toast.LENGTH_LONG).show();
-                } else{
-                    Toast.makeText(getApplicationContext(),
-                            "Сумма двух введённых чисел: " + (resultFloat),
-                            Toast.LENGTH_LONG).show();
-                }
+                numBtn = 1;
+                resultString(numBtn);
             }
         });
 
         deltaBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                float x = Float.parseFloat(op1.getText().toString());
-                float y = Float.parseFloat(op2.getText().toString());
-                float resultFloat = x - y;
-                int resultInt = (int)(x - y);
-
-                if(resultFloat == resultInt){
-                    Toast.makeText(getApplicationContext(),
-                            "Разность двух введённых чисел: " + (resultInt),
-                            Toast.LENGTH_LONG).show();
-                } else{
-                    Toast.makeText(getApplicationContext(),
-                            "Разность двух введённых чисел: " + (resultFloat),
-                            Toast.LENGTH_LONG).show();
-                }
+                numBtn = 2;
+                resultString(numBtn);
             }
         });
 
         multiplyBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                float x = Float.parseFloat(op1.getText().toString());
-                float y = Float.parseFloat(op2.getText().toString());
-                float resultFloat = x * y;
-                int resultInt = (int)(x * y);
-
-                if(resultFloat == resultInt){
-                    Toast.makeText(getApplicationContext(),
-                            "Произведение двух введённых чисел: " + (resultInt),
-                            Toast.LENGTH_LONG).show();
-                } else{
-                    Toast.makeText(getApplicationContext(),
-                            "Произведение двух введённых чисел: " + (resultFloat),
-                            Toast.LENGTH_LONG).show();
-                }
+                numBtn = 3;
+                resultString(numBtn);
             }
         });
 
         quotientBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                float x = Float.parseFloat(op1.getText().toString());
-                float y = Float.parseFloat(op2.getText().toString());
-                float resultFloat = x / y;
-                int resultInt = (int)(x / y);
-
-                if(resultFloat == resultInt){
-                    Toast.makeText(getApplicationContext(),
-                            "Частное двух введённых чисел: " + (resultInt),
-                            Toast.LENGTH_LONG).show();
-                } else{
-                    Toast.makeText(getApplicationContext(),
-                            "Частно двух введённых чисел: " + (resultFloat),
-                            Toast.LENGTH_LONG).show();
-                }
+                numBtn = 4;
+                resultString(numBtn);
             }
         });
+
     }
 }

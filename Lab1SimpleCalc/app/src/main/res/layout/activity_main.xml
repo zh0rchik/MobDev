@@ -11,7 +11,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Число 1"/>
+        android:text="@string/num1"/>
 
     <EditText
         android:inputType="numberDecimal"
@@ -22,7 +22,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Число 2"/>
+        android:text="@string/num2"/>
 
     <EditText
         android:inputType="numberDecimal"
@@ -34,24 +34,24 @@
         android:id="@+id/sumBtn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="+" />
+        android:text="@string/plus" />
 
     <Button
         android:id="@+id/deltaBtn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="-" />
+        android:text="@string/delta" />
 
     <Button
         android:id="@+id/multiplyBtn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="*" />
+        android:text="@string/multiply" />
 
     <Button
         android:id="@+id/quotientBtn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="/" />
+        android:text="@string/quotient" />
 
 </LinearLayout>
