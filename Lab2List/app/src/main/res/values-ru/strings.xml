@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Lab2List</string>
+    <string name="name">Имя</string>
+    <string name="btn_add">+</string>
+    <string name="btn_choice_last">Выбрать последний элемент</string>
+    <string name="btn_reset">Сбросить выбор</string>
+    <string name="btn_output">Вывести выбранные элементы</string>
+    <string name="error">Введите элемент</string>
+    <string name="message">Выберите элемент</string>
+</resources>

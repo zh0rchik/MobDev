@@ -18,30 +18,30 @@ public class MainActivity extends AppCompatActivity {
     Button multiplyBtn;
     Button quotientBtn;
     int numBtn;
-    float x;
-    float y;
+    double x;
+    double y;
 
     public void resultString(int numBtn){
         try{
-            x = Float.parseFloat(op1.getText().toString());
-            y = Float.parseFloat(op2.getText().toString());
+            x = Double.parseDouble(op1.getText().toString());
+            y = Double.parseDouble(op2.getText().toString());
         }catch (Exception e){
             Toast.makeText(getApplicationContext(), getResources().getString(R.string.error_enter),
                     Toast.LENGTH_SHORT).show();
             return;
         }
 
-        float resultFloat = 0;
+        double resultdouble = 0;
 
         switch (numBtn){
             case 1:
-                resultFloat = x + y;
+                resultdouble = x + y;
                 break;
             case 2:
-                resultFloat = x - y;
+                resultdouble = x - y;
                 break;
             case 3:
-                resultFloat = x * y;
+                resultdouble = x * y;
                 break;
             case 4:
                 if(y == 0){
@@ -49,13 +49,13 @@ public class MainActivity extends AppCompatActivity {
                             Toast.LENGTH_SHORT).show();
                     return;
                 }
-                resultFloat = x / y;
+                resultdouble = x / y;
                 break;
             default:
         }
 
         Intent i = new Intent(MainActivity.this, ResultActivity.class);
-        i.putExtra("Result", resultFloat);
+        i.putExtra("Result", resultdouble);
         startActivity(i);
     }
 

@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">Lab2List</string>
+    <string name="name">Name element</string>
+    <string name="btn_add">Add</string>
+    <string name="btn_choice_last">Choice last element</string>
+    <string name="btn_reset">Reset choice</string>
+    <string name="btn_output">Output choice element</string>
+    <string name="error">Input element</string>
+    <string name="message">Choice element</string>
+
 </resources>

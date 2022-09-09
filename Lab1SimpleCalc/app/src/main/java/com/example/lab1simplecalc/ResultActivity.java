@@ -14,7 +14,9 @@ public class ResultActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_result);
 
-        float res = getIntent().getFloatExtra("Result", 0);
+        double res = getIntent().getDoubleExtra("Result", 0);
+        res = Math.round(res*10000);
+        res /= 10000;
         TextView resultText = findViewById(R.id.resultText);
 
         String str;
