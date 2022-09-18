@@ -18,8 +18,6 @@ import java.util.ArrayList;
 import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity {
-    Locale localeEn = new Locale("en");
-    Locale localeRu = new Locale("ru");
 
     ArrayList<String> List;
     EditText fieldInput;
@@ -37,11 +35,11 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT) {
             Configuration config = new Configuration();
-            config.locale = localeRu;
+            config.locale = new Locale("ru");
             getResources().updateConfiguration(config, getResources().getDisplayMetrics());
         } else if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE) {
             Configuration configuration = new Configuration();
-            configuration.locale = localeEn;
+            configuration.locale = new Locale("en");
             getResources().updateConfiguration(configuration, getResources().getDisplayMetrics());
         }
 
