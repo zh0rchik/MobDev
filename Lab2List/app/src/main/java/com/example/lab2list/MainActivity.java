@@ -2,6 +2,8 @@ package com.example.lab2list;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.util.SparseBooleanArray;
 import android.view.View;
@@ -13,8 +15,12 @@ import android.widget.Space;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity {
+    Locale localeEn = new Locale("en");
+    Locale localeRu = new Locale("ru");
+
     ArrayList<String> List;
     EditText fieldInput;
     Button btnAddElement;
@@ -29,6 +35,16 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT) {
+            Configuration config = new Configuration();
+            config.locale = localeRu;
+            getResources().updateConfiguration(config, getResources().getDisplayMetrics());
+        } else if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE) {
+            Configuration configuration = new Configuration();
+            configuration.locale = localeEn;
+            getResources().updateConfiguration(configuration, getResources().getDisplayMetrics());
+        }
+
         setContentView(R.layout.activity_main);
 
         btnAddElement = findViewById(R.id.btn_add);
@@ -75,6 +91,7 @@ public class MainActivity extends AppCompatActivity {
                  if(listView.getItemAtPosition(listView.getCheckedItemPosition()) == null){
                      Toast.makeText(getApplicationContext(), getResources().getString(R.string.message),
                              Toast.LENGTH_SHORT).show();
+                     return;
                  }
                  Toast.makeText(getApplicationContext(),
                          String.valueOf(listView.getItemAtPosition(listView.getCheckedItemPosition())),
