@@ -91,6 +91,7 @@ public class MainActivity extends AppCompatActivity {
                  if(listView.getItemAtPosition(listView.getCheckedItemPosition()) == null){
                      Toast.makeText(getApplicationContext(), getResources().getString(R.string.message),
                              Toast.LENGTH_SHORT).show();
+                     return;
                  }
                  Toast.makeText(getApplicationContext(),
                          String.valueOf(listView.getItemAtPosition(listView.getCheckedItemPosition())),
